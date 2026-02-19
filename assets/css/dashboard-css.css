@@ -1,0 +1,303 @@
+/* === GLOBAL — FONT SIZE +2PX, RADIUS 6-10PX === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f1f6f9;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+      color: #1c3a4f;
+      font-size: 0.95rem;
+    }
+
+    .wrapper {
+      display: flex;
+      width: 100%;
+      align-items: stretch;
+      position: relative;
+    }
+
+    /* === SIDEBAR — EXACT SHRINK/EXPAND, MOBILE FLYOUT (preserved) === */
+    #sidebar {
+      min-width: 270px;
+      max-width: 270px;
+      background: radial-gradient(100% 100% at 0% 0%, #0e2a3b 0%, #07121c 100%);
+      color: #e6f0f5;
+      transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+      box-shadow: 4px 0 16px rgba(0, 20, 30, 0.1);
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid rgba(255,255,255,0.04);
+    }
+
+    #sidebar.desktop-hidden {
+      min-width: 0;
+      max-width: 0;
+      overflow: hidden;
+      padding: 0;
+      margin: 0;
+      transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+      border-right: none;
+    }
+
+    @media (max-width: 768px) {
+      #sidebar {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        bottom: 0;
+        z-index: 1050;
+        width: 270px;
+        max-width: 270px;
+        min-width: 270px;
+        transition: left 0.3s ease-in-out;
+        box-shadow: 0 0 30px rgba(0,0,0,0.3);
+        height: 100vh;
+        border-radius: 0 10px 10px 0;
+      }
+      #sidebar.mobile-visible {
+        left: 0;
+      }
+      #sidebar.desktop-hidden {
+        min-width: 270px;
+        max-width: 270px;
+        overflow: visible;
+      }
+      #closeSidebarMobile {
+        display: inline-block !important;
+      }
+    }
+
+    /* sidebar inner */
+    #sidebar .sidebar-header {
+      padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    #sidebar .sidebar-header h4 {
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.01em;
+      color: white;
+    }
+
+    .text-primary {
+      color: #6bc2d9 !important;
+    }
+
+    #sidebar ul.components {
+      padding: 0.8rem 0;
+      flex: 1;
+    }
+
+    #sidebar ul li a {
+      padding: 0.7rem 1.2rem;
+      display: flex;
+      align-items: center;
+      color: #c6deed;
+      text-decoration: none;
+      transition: all 0.15s;
+      border-left: 4px solid transparent;
+      font-weight: 450;
+      font-size: 0.93rem;
+      margin: 2px 8px;
+      border-radius: 8px 0 0 8px;
+    }
+
+    #sidebar ul li a:hover {
+      background: rgba(107, 194, 217, 0.12);
+      color: white;
+      border-left-color: #6bc2d9;
+    }
+
+    #sidebar ul li.active a {
+      background: linear-gradient(90deg, rgba(107,194,217,0.15) 0%, rgba(107,194,217,0.02) 100%);
+      color: white;
+      border-left-color: #6bc2d9;
+    }
+
+    #sidebar a i {
+      margin-right: 0.8rem;
+      width: 22px;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #b1def0;
+    }
+
+    .sidebar-footer {
+      padding: 1.2rem 1.2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.82rem;
+      color: #c2dae6;
+    }
+
+    .menu-label span {
+      font-size: 0.7rem;
+      letter-spacing: 0.5px;
+      color: #a1c2d6;
+    }
+
+    #closeSidebarMobile {
+      display: none;
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      color: rgba(255,255,255,0.9);
+      font-size: 1.35rem;
+      z-index: 1060;
+    }
+
+    .sidebar-backdrop {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(8, 40, 55, 0.3);
+      z-index: 1040;
+      backdrop-filter: blur(4px);
+    }
+    .sidebar-backdrop.active {
+      display: block;
+    }
+
+    .sidebar-header img {
+      height: 38px;
+      width: 38px;
+      border-radius: 8px;
+      margin-right: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    /* === MAIN CONTENT === */
+    #content {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #f1f6f9;
+    }
+
+    .dashboard-header {
+      background: white;
+      border-bottom: 1px solid rgba(0,0,0,0.02);
+      padding: 0.7rem 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    #sidebarCollapse, #sidebarCollapseMobile, #closeSidebarMobile {
+      background: transparent;
+      border: none;
+      font-size: 1.3rem;
+      color: #1f5b6e;
+      padding: 0.25rem 0.6rem;
+      border-radius: 8px;
+      transition: 0.15s;
+    }
+
+    /* CARDS – radius 8px */
+    .card-dash {
+      border: none;
+      border-radius: 8px;
+      background: white;
+      box-shadow: 0 4px 14px rgba(0, 40, 60, 0.04);
+      transition: 0.15s;
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+
+    .card-dash:hover {
+      box-shadow: 0 10px 22px -6px rgba(40, 130, 160, 0.08);
+    }
+
+    .stat-icon {
+      font-size: 2rem;
+      background: #e7f1f5;
+      padding: 10px;
+      border-radius: 8px;
+      color: #19718b;
+    }
+
+    .badge {
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 0.73rem;
+      padding: 0.35rem 0.9rem;
+    }
+
+    .progress {
+      border-radius: 6px;
+    }
+
+    .progress-bar {
+      border-radius: 6px;
+    }
+
+    .table thead th {
+      border-bottom: 1px solid #e0e9ef;
+      color: #3e6273;
+      font-weight: 600;
+      font-size: 0.73rem;
+      text-transform: uppercase;
+    }
+
+    .table td {
+      border-bottom: 1px solid #ecf2f5;
+      vertical-align: middle;
+      color: #1d4253;
+      font-size: 0.85rem;
+    }
+
+    .dropdown-menu {
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.02);
+      box-shadow: 0 12px 28px -6px rgba(0,0,0,0.1);
+      padding: 0.4rem 0;
+      font-size: 0.9rem;
+    }
+
+    .dropdown-item {
+      border-radius: 6px;
+      margin: 0.2rem 0.5rem;
+      padding: 0.4rem 1rem;
+    }
+
+    .dashboard-footer {
+      background: white;
+      border-top: 1px solid rgba(0,0,0,0.02);
+      padding: 1rem 1.8rem;
+      margin-top: auto;
+      color: #386878;
+      font-size: 0.85rem;
+    }
+
+    .tiny-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: #d9ecf2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #146b7e;
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+
+    /* work stat cards specific */
+    .work-stat-icon {
+      font-size: 1.8rem;
+      padding: 10px;
+      border-radius: 8px;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
