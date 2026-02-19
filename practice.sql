@@ -42,8 +42,8 @@ CREATE TABLE `registration` (
 --
 
 INSERT INTO `registration` (`id`, `fullname`, `phone`, `email`, `password`, `role`, `created_at`) VALUES
-(1, 'Janki Marandi', '9304626218', 'mjanki1054@gmail.com', '$2y$10$CgpJ.eSQDnuGE59gwFKX3ulhlV3pssC.I2hKsA7IL565t5moopmNi', 'admin', '2026-02-19 10:10:52'),
-(2, 'AjayKumar Dangi', '8210012196', 'ajay@gmail.com', '$2y$10$XmXnFdD./IjKiedQF8bbx.qek3btvxv8F6snD15USpLFKB.DifX8C', 'user', '2026-02-19 11:34:14');
+(1, 'Puja kumari', '1111111111', 'puja@.com', '$2y$10$CgpJ.eSQDnuGE59gwFKX3ulhlV3pssC.I2hKsA7IL565t5moopmNi', 'admin', '2026-02-19 10:10:52'),
+(2, 'Ajay Kumar', '2222222222', 'ajay@gmail.com', '$2y$10$XmXnFdD./IjKiedQF8bbx.qek3btvxv8F6snD15USpLFKB.DifX8C', 'user', '2026-02-19 11:34:14');
 
 --
 -- Indexes for dumped tables
